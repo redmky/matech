@@ -4,3 +4,12 @@ node_modules/
 .idea/
 .wix/
 jsconfig.json
+
+# unused assets
+assets/img/DALL*
+assets/img/hero-video.mp4
+assets/img/showreel.mov
+assets/img/businesscard-name.png
+assets/img/house.png
+assets/img/house_edited.png
+assets/img/house_edited_edited.png

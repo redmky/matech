@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matech IoT — Smart Home Solutions | Los Angeles, Ventura, Orange County</title>
+<meta name="description" content="Matech IoT brings 20 years of experience in network security and smart home solutions. Expert installation of home automation, audio-visual systems, security, and IoT devices across Southern California.">
+<meta property="og:title" content="Matech IoT — Smart Home Solutions">
+<meta property="og:description" content="Premium audio-visual and home automation systems designed, installed, and supported by experts.">
+<meta property="og:image" content="assets/img/smart-home-hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #171717; --white: #ffffff;
+    --gray-600: #4d4d4d; --gray-500: #666; --gray-400: #808080;
+    --gray-100: #ebebeb; --gray-50: #fafafa;
+    --accent: #0a72ef; --accent-light: #ebf5ff; --accent-text: #0068d6;
+    --shadow-border: rgba(0,0,0,0.08) 0px 0px 0px 1px;
+    --card-shadow: rgba(0,0,0,0.08) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 2px, rgba(0,0,0,0.04) 0px 8px 8px -8px, #fafafa 0px 0px 0px 1px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: var(--black); background: var(--white); }
+  img { max-width: 100%; height: auto; display: block; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 64px; display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.8); backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-border);
+  }
+  .nav-inner { max-width: 1200px; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--black); font-weight: 600; font-size: 18px; letter-spacing: -0.5px; }
+  .nav-logo img { height: 32px; width: auto; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--gray-500); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--black); }
+  .nav-cta { background: var(--black); color: var(--white); padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: #333; }
+  .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .mobile-menu-btn span { display: block; width: 20px; height: 2px; background: var(--black); margin: 4px 0; transition: 0.3s; }
+
+  /* SECTIONS */
+  section { padding: 120px 32px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding-top: 64px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: url('assets/img/smart-home-hero.jpg') center/cover no-repeat;
+    opacity: 0.15;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: rgba(10,114,239,0.15); color: #5ba3f7; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 500; margin-bottom: 24px; border: 1px solid rgba(10,114,239,0.3); }
+  .hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: #fff; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .hero p { font-size: 20px; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 600px; margin: 0 auto 40px; }
+  .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-dark { background: var(--white); color: var(--black); padding: 12px 24px; border-radius: 6px; font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+  .btn-dark:hover { background: var(--gray-50); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--white); padding: 12px 24px; border-radius: 6px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.4); }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--gray-100); max-width: 1200px; margin: 0 auto; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .about-image { border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); }
+  .about-image img { width: 100%; height: auto; }
+  .section-label { font-size: 14px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+  .about h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; color: var(--black); margin-bottom: 20px; }
+  .about p { font-size: 16px; color: var(--gray-600); line-height: 1.7; margin-bottom: 16px; }
+
+  /* METRIC STRIP */
+  .metrics { padding: 80px 32px; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .metric { text-align: center; padding: 40px 24px; background: var(--white); border-radius: 8px; box-shadow: var(--card-shadow); }
+  .metric .number { font-size: 48px; font-weight: 700; letter-spacing: -1.5px; color: var(--black); line-height: 1; margin-bottom: 8px; }
+  .metric .label { font-size: 14px; color: var(--gray-500); }
+
+  /* SERVICES */
+  .services { background: var(--gray-50); }
+  .services h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; color: var(--black); margin-bottom: 12px; }
+  .services .sub { font-size: 18px; color: var(--gray-600); margin-bottom: 64px; max-width: 600px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+  .card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: var(--card-shadow); transition: box-shadow 0.3s; }
+  .card:hover { box-shadow: rgba(0,0,0,0.08) 0px 0px 0px 1px, rgba(0,0,0,0.06) 0px 4px 8px, rgba(0,0,0,0.06) 0px 12px 12px -8px, #fafafa 0px 0px 0px 1px; }
+  .card-image { height: 200px; overflow: hidden; }
+  .card-image img { width: 100%; height: 100%; object-fit: cover; }
+  .card-body { padding: 32px; }
+  .card h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; color: var(--black); margin-bottom: 8px; }
+  .card p { font-size: 15px; color: var(--gray-600); line-height: 1.6; margin-bottom: 20px; }
+  .card-link { font-size: 14px; font-weight: 500; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+  .card-link:hover { text-decoration: underline; }
+
+  /* PROJECTS */
+  .projects { background: var(--white); }
+  .projects h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; color: var(--black); text-align: center; margin-bottom: 12px; }
+  .projects .sub { font-size: 18px; color: var(--gray-600); text-align: center; margin-bottom: 48px; }
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+  .project-card { border-radius: 8px; overflow: hidden; box-shadow: var(--card-shadow); background: var(--white); }
+  .project-card img { width: 100%; height: 240px; object-fit: cover; }
+  .project-card-body { padding: 20px; }
+  .project-card-body h3 { font-size: 16px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+  .project-card-body p { font-size: 14px; color: var(--gray-500); }
+
+  /* BRANDS */
+  .brands { background: var(--gray-50); text-align: center; }
+  .brands h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -0.02em; color: var(--black); margin-bottom: 48px; }
+  .brand-grid { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; align-items: center; }
+  .brand-item { width: 120px; height: 80px; background: var(--white); border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-border); padding: 16px; }
+  .brand-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+  /* WORKFLOW */
+  .workflow { padding: 120px 32px; }
+  .workflow h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; color: var(--black); text-align: center; margin-bottom: 64px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; position: relative; }
+  .step { text-align: center; }
+  .step-number { font-family: 'Roboto Mono', monospace; font-size: 12px; font-weight: 500; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+  .step h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--black); margin-bottom: 8px; }
+  .step p { font-size: 15px; color: var(--gray-600); line-height: 1.6; max-width: 280px; margin: 0 auto; }
+
+  /* AREAS */
+  .areas { background: var(--gray-50); }
+  .areas h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; color: var(--black); text-align: center; margin-bottom: 12px; }
+  .areas .sub { font-size: 18px; color: var(--gray-600); text-align: center; margin-bottom: 48px; }
+  .area-grid { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .area-tag { background: var(--white); color: var(--gray-600); padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; box-shadow: var(--shadow-border); }
+
+  /* CTA */
+  .cta-section { background: var(--black); color: var(--white); text-align: center; }
+  .cta-section h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .cta-section p { font-size: 18px; color: var(--gray-400); margin-bottom: 40px; }
+  .cta-section .btn-dark { background: var(--white); color: var(--black); }
+  .cta-section .btn-dark:hover { background: var(--gray-50); }
+  .cta-section .btn-ghost { color: var(--white); border: 1px solid rgba(255,255,255,0.2); }
+  .cta-section .btn-ghost:hover { background: rgba(255,255,255,0.05); }
+
+  /* FOOTER */
+  footer { padding: 48px 32px; border-top: 1px solid var(--gray-100); }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-left { font-size: 13px; color: var(--gray-500); }
+  .footer-right { display: flex; gap: 24px; }
+  .footer-right a { font-size: 13px; color: var(--gray-500); text-decoration: none; }
+  .footer-right a:hover { color: var(--black); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: block; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; gap: 40px; }
+    .cards { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .project-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    section { padding: 80px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="assets/img/logo.png" alt="Matech IoT Logo">
+      Matech IoT
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#areas">Areas</a></li>
+    </ul>
+    <a href="https://www.wix.com/invoices" target="_blank" rel="noopener" class="nav-cta">Get a Quote</a>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content section-inner">
+    <span class="hero-badge">Los Angeles &bull; Ventura &bull; Orange County</span>
+    <h1>Smart home infrastructure, engineered.</h1>
+    <p>Premium audio-visual and home automation systems designed, installed, and supported by experts who understand your home.</p>
+    <div class="hero-ctas">
+      <a href="tel:3105646447" class="btn-dark">Schedule a Consultation</a>
+      <a href="#services" class="btn-ghost">See Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="assets/img/iot-living-room.jpg" alt="Smart home IoT devices in a modern living room">
+      </div>
+      <div>
+        <div class="section-label">About Us</div>
+        <h2>20 years building connected homes</h2>
+        <p>MATech, a family-owned technology company, brings 20 years of experience in network security. Dedicated to helping you with smart home device installation and services.</p>
+        <p>Our trained team is here to inform you about home security, smart home devices, audio, and IoT to ensure your peace of mind.</p>
+        <p>Whether you're looking to upgrade your existing devices or create a custom setup, we are here to bring your vision to life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- METRICS -->
+<section class="metrics">
+  <div class="section-inner">
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="number">200+</div>
+        <div class="label">Homes Automated</div>
+      </div>
+      <div class="metric">
+        <div class="number">20+</div>
+        <div class="label">Years Experience</div>
+      </div>
+      <div class="metric">
+        <div class="number">5&star;</div>
+        <div class="label">Customer Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">Services</div>
+    <h2>Everything your home needs to be connected.</h2>
+    <p class="sub">From design to installation to ongoing support &mdash; we handle the complexity so you don't have to.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-image">
+          <img src="assets/img/home-control-app.jpg" alt="Home control app interface">
+        </div>
+        <div class="card-body">
+          <h3>Audio-Visual Solutions</h3>
+          <p>Immersive audio-visual solutions that transform your living space into a captivating entertainment hub. Home theaters, outdoor entertainment, whole-home audio, and media room design with state-of-the-art technologies.</p>
+          <a href="#contact" class="card-link">Get a quote &rarr;</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="assets/img/smart-home-hero.jpg" alt="Smart home automation">
+        </div>
+        <div class="card-body">
+          <h3>Home Automation</h3>
+          <p>Experience the convenience and luxury of cutting-edge home automation. Smart lighting, climate control, security systems, automated blinds &mdash; all seamlessly integrated to elevate your lifestyle.</p>
+          <a href="#contact" class="card-link">Get a quote &rarr;</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="assets/img/smart-home-internet.jpg" alt="IoT devices and network security">
+        </div>
+        <div class="card-body">
+          <h3>Network & Security</h3>
+          <p>Expert consultation and flawless installation with 20 years of network security experience. Custom system architecture, equipment selection, and professional installation tailored to your lifestyle and budget.</p>
+          <a href="#contact" class="card-link">Get a quote &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <div class="section-label" style="text-align:center;">Our Work</div>
+    <h2>Recent installations</h2>
+    <p class="sub">Real projects, real homes, real results.</p>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="assets/img/project-1.png" alt="Smart home installation project">
+        <div class="project-card-body">
+          <h3>Smart Home Integration</h3>
+          <p>Full home automation system</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="assets/img/project-2.png" alt="Home theater installation">
+        <div class="project-card-body">
+          <h3>Home Theater Setup</h3>
+          <p>Cinema-grade audio-visual</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="assets/img/project-3.png" alt="Security system installation">
+        <div class="project-card-body">
+          <h3>Security System</h3>
+          <p>Integrated smart security</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="assets/img/project-4.png" alt="IoT network setup">
+        <div class="project-card-body">
+          <h3>IoT Network Design</h3>
+          <p>Whole-home connectivity</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="assets/img/project-5.png" alt="Smart lighting installation">
+        <div class="project-card-body">
+          <h3>Smart Lighting</h3>
+          <p>Automated lighting control</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands">
+  <div class="section-inner">
+    <h2>Trusted technology partners</h2>
+    <div class="brand-grid">
+      <div class="brand-item">
+        <img src="assets/img/ring-doorbell.jpg" alt="Ring">
+      </div>
+      <div class="brand-item">
+        <img src="assets/img/august-doorbell.jpeg" alt="August">
+      </div>
+      <div class="brand-item">
+        <img src="assets/img/ecobee-thermostat.jpeg" alt="Ecobee">
+      </div>
+      <div class="brand-item">
+        <img src="assets/img/hightech.jpeg" alt="High-tech devices">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW -->
+<section class="workflow" id="process">
+  <div class="section-inner">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">Step 01</div>
+        <h3>Consultation</h3>
+        <p>We visit your home, understand your needs, and design a system architecture that fits your lifestyle.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">Step 02</div>
+        <h3>Installation</h3>
+        <p>Our certified technicians install and configure every component with clean, professional workmanship.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">Step 03</div>
+        <h3>Support</h3>
+        <p>Ongoing maintenance, updates, and support so your system always works when you need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="section-inner">
+    <h2>Service Areas</h2>
+    <p class="sub">Professional installation across Southern California.</p>
+    <div class="area-grid">
+      <span class="area-tag">Los Angeles</span>
+      <span class="area-tag">Ventura County</span>
+      <span class="area-tag">Orange County</span>
+      <span class="area-tag">San Fernando Valley</span>
+      <span class="area-tag">Malibu</span>
+      <span class="area-tag">Beverly Hills</span>
+      <span class="area-tag">Santa Monica</span>
+      <span class="area-tag">Pasadena</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-inner">
+    <h2>Ready to upgrade your home?</h2>
+    <p>Call (310) 564-6447 or email support@matechiot.com</p>
+    <div class="hero-ctas">
+      <a href="tel:3105646447" class="btn-dark">Call Now</a>
+      <a href="mailto:support@matechiot.com" class="btn-ghost">Email Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">&copy; 2025 Matech IoT. All rights reserved. | Serving Los Angeles, Ventura &amp; Orange County</div>
+    <div class="footer-right">
+      <a href="https://instagram.com/matechiot" target="_blank" rel="noopener">Instagram</a>
+      <a href="tel:3105646447">(310) 564-6447</a>
+      <a href="mailto:support@matechiot.com">support@matechiot.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
