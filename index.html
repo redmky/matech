@@ -109,6 +109,9 @@
   .projects { background: var(--white); }
   .projects h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; color: var(--black); text-align: center; margin-bottom: 12px; }
   .projects .sub { font-size: 18px; color: var(--gray-600); text-align: center; margin-bottom: 48px; }
+  .project-carousel { max-width: 800px; margin: 0 auto 40px; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); position: relative; aspect-ratio: 16/9; background: var(--gray-50); }
+  .project-carousel img, .project-carousel video { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.8s ease-in-out; }
+  .project-carousel img.active, .project-carousel video.active { opacity: 1; z-index: 1; }
   .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
   .project-card { border-radius: 8px; overflow: hidden; box-shadow: var(--card-shadow); background: var(--white); }
   .project-card img { width: 100%; height: 240px; object-fit: cover; }
@@ -299,6 +302,24 @@
     <div class="section-label">Our Work</div>
     <h2>Recent installations</h2>
     <p class="sub">Real projects, real homes, real results.</p>
+
+    <div class="project-carousel" id="galleryCarousel">
+      <img src="assets/img/gallery/gallery-1.jpg" alt="Project" class="active">
+      <img src="assets/img/gallery/gallery-2.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-3.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-4.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-5.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-6.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-7.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-8.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-9.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-10.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-11.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-12.jpg" alt="Project">
+      <img src="assets/img/gallery/gallery-13.jpg" alt="Project">
+      <video src="assets/img/gallery/gallery-video.mp4" muted playsinline loop></video>
+    </div>
+
     <p style="font-size:18px; color:var(--gray-600); margin-bottom:24px;">Check out our Instagram and YouTube pages to see our work in action.</p>
     <div style="display:flex; gap:32px; justify-content:center; align-items:center; flex-wrap:wrap;">
       <a href="https://www.instagram.com/matechiot" target="_blank" rel="noopener" style="display:inline-block;">
@@ -378,6 +399,57 @@
     </div>
   </div>
 </footer>
+
+<!-- Gallery Carousel Script -->
+<script>
+(function(){
+  const carousel = document.getElementById('galleryCarousel');
+  if(!carousel) return;
+  const items = carousel.querySelectorAll('img, video');
+  const mediaList = Array.from(items);
+  let current = 0;
+  let videoEl = null;
+
+  // Preload images
+  mediaList.forEach(function(item){
+    if(item.tagName === 'VIDEO'){
+      videoEl = item;
+    } else {
+      const img = new Image();
+      img.src = item.src;
+    }
+  });
+
+  function showRandom(){
+    // Stop video if playing
+    if(videoEl && videoEl.classList.contains('active')){
+      videoEl.pause();
+      videoEl.classList.remove('active');
+    }
+
+    // Remove active from current
+    mediaList[current].classList.remove('active');
+
+    // Pick a new random index (different from current)
+    let next;
+    do {
+      next = Math.floor(Math.random() * mediaList.length);
+    } while(next === current && mediaList.length > 1);
+
+    current = next;
+    const nextItem = mediaList[current];
+    nextItem.classList.add('active');
+
+    // If it's a video, play it
+    if(nextItem.tagName === 'VIDEO'){
+      nextItem.play().catch(function(){});
+    }
+  }
+
+  // Change every 4 seconds
+  setInterval(showRandom, 4000);
+})();
+</script>
 
 </body>
 </html>
